@@ -1,0 +1,415 @@
+// EXP1 - Index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+   <h1>Hello AIML</h1>
+  </React.StrictMode>
+);
+
+
+*********************************************************************************************************************
+
+
+// EXP 2
+
+// Program with jsx :
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const myElement = <h1>221107056 with jsx !</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+
+// Program without JSX
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const myElement = React.createElement("h1", null, '221107056 without jsx !');
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(myElement);
+
+
+// Program with components :
+
+//Index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Heading from './Heading';
+import Para from './Para';
+import List from './List';
+
+ReactDOM.render(
+    <>
+    <Heading> </Heading>
+    <Para> </Para>
+    <List> </List>
+
+    </>,document.getElementById('root')
+);
+
+
+//Heading.js
+
+import React from 'react';
+function Heading
+return <h1>My PRN is 221107056</h1>;
+}
+export default Heading;
+
+//List.js
+
+import React from 'react'
+
+function List() {
+  return (
+    <ol>
+      <li>Mobile No. : - 91234xxxxx</li>
+      <li>Email ID : - rohitl31@example.com</li>
+      <li>Address :- Near Patel Nagar, Shirpur</li>
+    </ol>
+  )
+}
+
+export default List
+
+
+// Para.js
+
+import React from 'react'
+
+function Para() {
+  return (
+    <p> My Name is :Rajput Rohit Kevalsing </p>
+  )
+}
+
+export default Para
+
+
+//Program with props :
+
+
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function RCPIT(props) {
+    return <h1>I am {props.name}! Student of RCPIT.</h1>;
+}
+
+const myElement = <RCPIT name="NIRANJAN" />;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+
+// Program with usestate :
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+<React.StrictMode>
+  <App />
+</React.StrictMode>
+);
+
+//App.js
+import React from 'react'
+import UState from './UState'
+
+function App() {
+  return (
+    <UState></UState>
+  )
+}
+
+export default App
+
+//UState.js
+import React, { useState } from 'react';
+
+function UState() {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+            <h1>{count}</h1>
+            <button onClick={() => setCount(count + 1)}>Update</button>
+        </div>
+    );
+}
+
+export default UState;
+
+
+*******************************************************************************************
+
+EXP 3 
+
+//App.js
+import React from 'react'
+import HookuseRef from './HookuseRef'
+import Forms1 from './Forms1'
+
+function App() {
+  return (
+	//<HookuseRef></HookuseRef>
+  <Forms1></Forms1>
+  )
+}
+
+export default App
+
+//Forms1.js
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import './App.css';
+
+export default function Forms1() {
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('Male');
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        alert(`Hello ${name}, you are submitting the form`);
+    };
+
+    return (
+        <div className="formevent">
+            <h1>T1  Batch React Form</h1>
+            <form onSubmit={handleSubmit}>
+                <label>Name: </label>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br/><br/>
+
+                <label>Gender: </label>
+                <select value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select><br/><br/>
+
+                <label>Phone Number: </label>
+                <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} /><br/><br/>
+
+                <input type="submit" />
+            </form>
+        </div>
+    );
+}
+
+ReactDOM.render(<Forms1 />, document.getElementById('root'));
+
+//Keys
+
+import React from 'react'
+import HookuseRef from './HookuseRef'
+import Forms1 from './Forms1'
+import Student from './Student'
+
+
+function App() {
+  return (
+	//<HookuseRef></HookuseRef>
+  //<Forms1></Forms1>
+  <Student></Student>
+  )
+}
+
+export default App
+
+// Student.js
+
+// //Students.js
+// import React from 'react';
+
+// function Students() {
+//     const students = ["Aakash", "Virat", "Rohit", "Sachin"];
+    
+//     return (
+//         <div>
+//             {students.map((std) => <h1 key={std}>{std}</h1>)}
+//         </div>
+//     );
+// }
+
+// export default Students;
+
+import React from 'react';
+
+function Students() {
+    const students = ["Aakash", "Virat", "Rohit", "Sachin"];
+    let studentNames = students.map((std, index) => <li key={index}>{std}</li>);
+
+    return (
+        <div>
+            <ul>
+                {studentNames}
+            </ul>
+        </div>
+    );
+}
+
+export default Students;
+
+// Ref 
+
+import React from 'react'
+import HookuseRef from './HookuseRef'
+import Forms1 from './Forms1'
+import Student from './Student'
+
+
+function App() {
+  return (
+	<HookuseRef></HookuseRef>
+  //<Forms1></Forms1>
+  //<Student></Student>
+  )
+}
+
+export default App
+
+//HookRef.js
+
+import React, { useEffect, useRef } from 'react';
+
+function HookuseRef() {
+    const newRef = useRef();
+
+    const handleHeading = () => {
+        newRef.current.style.color = 'red';
+    };
+
+    useEffect(() => {
+        console.log(newRef);  // This logs the newRef to the console when the component is mounted
+    }, []);  // Empty dependency array to ensure this runs once on mount
+
+    return (
+        <div>
+            <h1 ref={newRef}>Hello 221107013</h1>
+            <button onClick={handleHeading}>Submit</button>
+        </div>
+    );
+}
+
+export default HookuseRef;
+
+// 
+
+// React Routers :
+//App.js
+
+import Home from './Home';
+import Contact from './Contact';
+import About from './About';
+import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+
+export default App;
+
+//Home.jsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const Home = () => {
+    return (
+        <>
+            <header>
+                <nav>
+                    <ul>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/about">About</NavLink></li>
+                        <li><NavLink to="/contact">Contact</NavLink></li>
+                    </ul>
+                </nav>
+            </header>
+        </>
+    );
+};
+
+export default Home;
+
+
+// About.jsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const About = () => {
+  return (
+    <>
+      <header>
+        <nav>
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+          </ul>
+        </nav>
+      </header>
+    </>
+  );
+};
+
+export default About;
+
+
+//Contacts.jsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const Contact = () => {
+  return (
+    <>
+      <header>
+        <nav>
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
+          </ul>
+        </nav>
+      </header>
+    </>
+  );
+};
+
+export default Contact;
+
+
+*************************************************************************************
+
+
+
